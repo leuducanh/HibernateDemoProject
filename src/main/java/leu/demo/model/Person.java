@@ -1,6 +1,7 @@
 package leu.demo.model;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -15,12 +16,12 @@ public class Person {
     private int age;
 
     @OneToMany(mappedBy = "person")
-    private Set<PersonProfile> personProfiles;
+    private List<PersonProfile> personProfiles;
 
     public Person() {
     }
 
-    public Person(String name, int age, Set<PersonProfile> personProfiles) {
+    public Person(String name, int age, List<PersonProfile> personProfiles) {
         this.name = name;
         this.age = age;
         this.personProfiles = personProfiles;
@@ -29,6 +30,14 @@ public class Person {
     public Person(String name, int age) {
         this.name = name;
         this.age = age;
+    }
+
+    public List<PersonProfile> getPersonProfiles() {
+        return personProfiles;
+    }
+
+    public void setPersonProfiles(List<PersonProfile> personProfiles) {
+        this.personProfiles = personProfiles;
     }
 
     public int getId() {
